@@ -2,9 +2,30 @@ export default [
   {
     path: '/welcome',
     name: 'welcome',
-    icon: 'smile',
+    // icon: 'smile',
     component: './Welcome',
     hideInMenu: true,
+    hideInBreadcrumb : true,
+  },
+
+
+  {
+    path: '/home',
+    name: 'home',
+    // icon: 'smile',
+    component: './hometest/index',
+    //layout: false,
+    hideInMenu: true,
+    hideInBreadcrumb : true,
+  },
+  {
+    path: '/test',
+    name: 'test',
+    // icon: 'smile',
+    component: './home/index',
+    layout: false,
+    // hideInMenu: true,
+    hideInBreadcrumb : true,
   },
   {
     path: '/user',
@@ -28,15 +49,15 @@ export default [
     ],
   },
   
-  
-
 
   {
     path: '/admin',
     name: 'admin',
     icon: 'user',
     access: 'canAdmin',
-    hideInMenu: true,
+    //component: './layout/layout-test/index',
+    //layout: false,
+    // hideInMenu: true,
     routes: [
       {
         name: 'settings',
@@ -44,7 +65,7 @@ export default [
         path: '/admin/settings',
         component: './account/settings',
       },
-  
+     
       {
         component: './404',
       },

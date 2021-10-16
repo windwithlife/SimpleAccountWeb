@@ -3,13 +3,55 @@
 import Model from './model';
 
 
+const menuMock = [
+  {
+    path: '/welcome',
+    name: '测试菜单',
+    key:'0',
+  },
+  {
+    path: '/ok',
+    name: '测试菜单第二项',
+    key:'1',
+    children: [
+      {
+        path: '/home',
+        name: '测试Home页',
+        icon: 'https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg',
+        title: "测试",
+        key:'10',
+      },
+      {
+        path: '/hometest',
+        name: '测试Test',
+        icon: 'https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg',
+        title: "测试",
+        key:'11',
+        children: [
+          {
+            path: '/welcome/welcome',
+            name: '测试子菜单',
+            exact: true,
+          },
+        ],
+      },
+    ],
+  },
+  
+];
+
+
 export default class MenuModel {
   static async currentUser(options) {
     return await new Model().fetch_get('/account-service/currentUser', options);
+    
   };
 
+  static async fetchMenuData(options) {
+    return menuMock;
+  };
 
-
+  
   /***********************************权限管理*************** */
   //查询平台上所有权限
   static async queryAll(options) {

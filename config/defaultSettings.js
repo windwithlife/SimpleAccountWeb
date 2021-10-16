@@ -1,5 +1,6 @@
 const Settings = {
   navTheme: 'light',
+  // pure:true,
   // 拂晓蓝
   primaryColor: '#1890ff',
   layout: 'top',
@@ -13,3 +14,4 @@ const Settings = {
   iconfontUrl: '',
 };
 export default Settings;
+
