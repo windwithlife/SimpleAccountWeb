@@ -32,12 +32,11 @@ export async function getInitialState() {
       return msg.data;
     } catch (error) {
       console.log('get current user exception');
-      history.push(loginPath);
+      // history.push(loginPath);
     }
 
     return undefined;
   }; // 如果是登录页面，不执行
-
 
 
   if (history.location.pathname !== loginPath) {
@@ -50,13 +49,16 @@ export async function getInitialState() {
       settings: {},
       menu: menuData,
     };
+  }else{
+    const menuData = await MenuModel.fetchMenuData();
+    return {
+      fetchUserInfo,
+      settings: {},
+      menu: menuData,
+    };
   }
 
-  return {
-    fetchUserInfo,
-    settings: {},
-    menu: [],
-  };
+  
 } // ProLayout 支持的api https://procomponents.ant.design/components/layout
 
 
@@ -70,18 +72,13 @@ export const layout = ({ initialState }) => {
     },
     footerRender: () => <Footer id="Footer0_0" />, 
     onPageChange: () => {
-      const { location } = history; // 如果没有登录，重定向到 login
+      // const { location } = history; // 如果没有登录，重定向到 login
 
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        history.push(loginPath);
-      }
+      // if (!initialState?.currentUser && location.pathname !== loginPath) {
+      //   history.push(loginPath);
+      // }
     },
-    // links: [
-    //   <a href="https://traefik.koudaibook.com/dashboard/">
-    //     <BookOutlined />
-    //     <span>平台集群路由及流量监控</span>
-    //   </a>,
-    // ],
+   
    
     actionRef: layoutActionRef,
    

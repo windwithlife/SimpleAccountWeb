@@ -3,20 +3,24 @@
 import React from 'react';
 import { enquireScreen } from 'enquire-js';
 
-import Nav3 from './Nav3';
+//import Nav0 from './Nav0';
 import Banner0 from './Banner0';
 import Content0 from './Content0';
-import Content5 from './Content5';
+import Content1 from './Content1';
 import Content3 from './Content3';
-import Footer1 from './Footer1';
+import Footer0 from './Footer0';
+
+// import RightContent from '@/components/RightContent';
+// import Navigator from '@/components/Navigator/Nav0';
+
 
 import {
-  Nav30DataSource,
-  Banner01DataSource,
+  Nav00DataSource,
+  Banner00DataSource,
   Content00DataSource,
-  Content50DataSource,
+  Content10DataSource,
   Content30DataSource,
-  Footer10DataSource,
+  Footer00DataSource,
 } from './data.source';
 import './less/antMotionStyle.less';
 
@@ -30,9 +34,10 @@ const { location = {} } = typeof window !== 'undefined' ? window : {};
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+    ///console.log('props...',props);
     this.state = {
       isMobile,
-      show: true,
+      show: !location.port, // 如果不是 dva 2.0 请删除
     };
   }
 
@@ -42,21 +47,22 @@ export default class Home extends React.Component {
       this.setState({ isMobile: !!b });
     });
     // dva 2.0 样式在组件渲染之后动态加载，导致滚动组件不生效；线上不影响；
-   
+    
   }
 
   render() {
     const children = [
-      <Nav3
-        id="Nav3_0"
-        key="Nav3_0"
-        dataSource={Nav30DataSource}
-        isMobile={this.state.isMobile}
-      />,
+      // <Nav0
+      //   id="Nav0_0"
+      //   key="Nav0_0"
+      //   dataSource={Nav00DataSource}
+      //   isMobile={this.state.isMobile}
+      // />,
+      // <Navigator id="Nav0_0" RightContent={RightContent} ></Navigator>,
       <Banner0
-        id="Banner0_1"
-        key="Banner0_1"
-        dataSource={Banner01DataSource}
+        id="Banner0_0"
+        key="Banner0_0"
+        dataSource={Banner00DataSource}
         isMobile={this.state.isMobile}
       />,
       <Content0
@@ -65,10 +71,10 @@ export default class Home extends React.Component {
         dataSource={Content00DataSource}
         isMobile={this.state.isMobile}
       />,
-      <Content5
-        id="Content5_0"
-        key="Content5_0"
-        dataSource={Content50DataSource}
+      <Content1
+        id="Content1_0"
+        key="Content1_0"
+        dataSource={Content10DataSource}
         isMobile={this.state.isMobile}
       />,
       <Content3
@@ -77,22 +83,22 @@ export default class Home extends React.Component {
         dataSource={Content30DataSource}
         isMobile={this.state.isMobile}
       />,
-      <Footer1
-        id="Footer1_0"
-        key="Footer1_0"
-        dataSource={Footer10DataSource}
-        isMobile={this.state.isMobile}
-      />,
+      // <Footer0
+      //   id="Footer0_0"
+      //   key="Footer0_0"
+      //   dataSource={Footer00DataSource}
+      //   isMobile={this.state.isMobile}
+      // />,
     ];
     return (
       <div
-        className="templates-wrapper"
+       
         ref={(d) => {
           this.dom = d;
         }}
       >
         {/* 如果不是 dva 2.0 替换成 {children} start */}
-        {this.state.show && children}
+        { children}
         {/* 如果不是 dva 2.0 替换成 {children} end */}
       </div>
     );

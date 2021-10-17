@@ -22,7 +22,7 @@ const menuMock = [
         key:'10',
       },
       {
-        path: '/hometest',
+        path: '/test',
         name: '测试Test',
         icon: 'https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg',
         title: "测试",

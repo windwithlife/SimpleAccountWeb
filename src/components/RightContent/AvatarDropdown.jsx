@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
 import { history, useModel } from 'umi';
+import { BrowserHistory } from 'simple-framework/lib/base';
 import { stringify } from 'querystring';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
@@ -34,7 +35,6 @@ const getAvatarURL = (currentUser) => {
     if (currentUser.avatar) {
       return currentUser.avatar;
     }
-
     const url = 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png';
     return url;
   }
@@ -75,10 +75,13 @@ const AvatarDropdown = ({ menu }) => {
   }
 
   const { currentUser } = initialState;
-
+  const userClick = ()=>{
+      console.log('user login click...');
+      BrowserHistory.push('user/login');
+  };
   if (!currentUser || !currentUser.token) {
-    //return(<span className={`${styles.name} anticon`}>未登录</span>)
-    return loading;
+    return(<span onClick= {userClick} className={`${styles.name} anticon`}>登录</span>)
+    //return loading;
   }
 
   const menuHeaderDropdown = (
@@ -92,7 +95,7 @@ const AvatarDropdown = ({ menu }) => {
       {menu && (
         <Menu.Item key="settings">
           <SettingOutlined />
-          个人设置
+          个人中心
         </Menu.Item>
       )}
       {menu && <Menu.Divider />}

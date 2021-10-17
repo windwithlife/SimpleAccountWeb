@@ -2,7 +2,6 @@ export default [
   {
     path: '/welcome',
     name: 'welcome',
-    // icon: 'smile',
     component: './Welcome',
     hideInMenu: true,
     hideInBreadcrumb : true,
@@ -13,7 +12,7 @@ export default [
     path: '/home',
     name: 'home',
     // icon: 'smile',
-    component: './hometest/index',
+    component: './home/index',
     //layout: false,
     hideInMenu: true,
     hideInBreadcrumb : true,
@@ -22,8 +21,8 @@ export default [
     path: '/test',
     name: 'test',
     // icon: 'smile',
-    component: './home/index',
-    layout: false,
+    component: './test/index',
+    //layout: false,
     // hideInMenu: true,
     hideInBreadcrumb : true,
   },
@@ -32,24 +31,16 @@ export default [
     layout: false,
     routes: [
       {
-        path: '/user',
+        name: 'login',
+        path: '/user/login',
+        component: './user/Login',
        
-        routes: [
-          {
-            name: 'login',
-            path: '/user/login',
-            component: './user/Login',
-           
-          },
-        ],
       },
       {
         component: './404',
       },
     ],
   },
-  
-
   {
     path: '/admin',
     name: 'admin',
