@@ -113,7 +113,7 @@
     "rc-queue-anim": "^2.0.0",
     "rc-scroll-anim": "^2.7.6",
     "rc-tween-one": "^2.7.3",
-    "simple-framework": "^1.0.22",
+    "simple-framework": "^1.0.47",
     "stylelint": "^13.0.0",
     "typescript": "^4.2.2"
   },

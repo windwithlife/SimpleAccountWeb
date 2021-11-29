@@ -1,9 +1,8 @@
 import { PageLoading } from '@ant-design/pro-layout';
 import { history, Link } from 'umi';
 import RightContent from '@/components/RightContent';
-import {Header} from 'simple-framework';
+import { Header0 } from 'simple-framework';
 import Footer from '@/components/layout/black/Footer0';
-
 
 import { createRef } from 'react';
 
@@ -38,7 +37,6 @@ export async function getInitialState() {
     return undefined;
   }; // 如果是登录页面，不执行
 
-
   if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
     const menuData = await MenuModel.fetchMenuData();
@@ -49,7 +47,7 @@ export async function getInitialState() {
       settings: {},
       menu: menuData,
     };
-  }else{
+  } else {
     const menuData = await MenuModel.fetchMenuData();
     return {
       fetchUserInfo,
@@ -57,11 +55,7 @@ export async function getInitialState() {
       menu: menuData,
     };
   }
-
-  
 } // ProLayout 支持的api https://procomponents.ant.design/components/layout
-
-
 
 export const layout = ({ initialState }) => {
   return {
@@ -70,32 +64,37 @@ export const layout = ({ initialState }) => {
     waterMarkProps: {
       content: initialState?.currentUser?.name,
     },
-    footerRender: () => <Footer id="Footer0_0" />, 
+    footerRender: () => <Footer id="Footer0_0" />,
     onPageChange: () => {
       // const { location } = history; // 如果没有登录，重定向到 login
-
       // if (!initialState?.currentUser && location.pathname !== loginPath) {
       //   history.push(loginPath);
       // }
     },
-   
-   
+
     actionRef: layoutActionRef,
-   
-    menuDataRender: ()=>{ 
-        const menuData = initialState.menu;
-        console.log("menudata.....",menuData);
-        return menuData;
-      },
-    headerRender: (props)=>{
+
+    menuDataRender: () => {
+      const menuData = initialState.menu;
+      console.log('menudata.....', menuData);
+      return menuData;
+    },
+    headerRender: (props) => {
       console.log(props.menuData);
-      
-      const onMenuClick=function(item){
-          console.log('click...',item)
-          history.push(item.path);
-      }
+
+      const onMenuClick = function (item) {
+        console.log('click...', item);
+        history.push(item.path);
+      };
       return (
-      <Header id="Nav0_0" logo="/logo.svg" menuClick={onMenuClick} style={{color:'#fff',background:'#000'}} RightContent={props.rightContentRender} menuData={props.menuData} ></Header>
+        <Header0
+          id="Nav0_0"
+          logo="/logo.svg"
+          menuClick={onMenuClick}
+          style={{ color: '#fff', background: '#000' }}
+          RightContent={props.rightContentRender}
+          menuData={props.menuData}
+        ></Header0>
       );
     },
     menuHeaderRender: undefined,
